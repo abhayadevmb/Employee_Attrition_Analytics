@@ -1,8 +1,3 @@
--- ==========================================================
--- Business Question 4: Do employees with lower monthly income leave the company at higher rates?
--- ==========================================================
--- Objective: Analyze the relationship between pay levels and voluntary attrition.
-
 WITH income_bands AS (
     SELECT 
         "EmployeeNumber",
@@ -27,19 +22,3 @@ FROM income_bands ib
 JOIN career_history ch ON ib."EmployeeNumber" = ch."EmployeeNumber"
 GROUP BY ib."Income_Band"
 ORDER BY MIN(ib."MonthlyIncome") ASC;
-
-/* 
-------------------------------------------------------------
-🔍 HR INSIGHT:
-* Employees earning less than $5,000/month represent the vast majority of departures (163 exits)
-  with a highly elevated attrition rate of 21.76%.
-* Attrition drops significantly for the Medium ($5k - $10k) and High ($10k - $15k) bands to ~11% - 13.5%.
-* Executive level employees ($15k+) have the lowest attrition rate at 3.76%.
-* Pay levels have a strong inverse relationship with turnover risk.
-
-💡 RECOMMENDED BUSINESS ACTIONS:
-1. Conduct market salary mapping to verify if entry-level salaries are competitive.
-2. Build structured retention plans and pay-adjustment budgets specifically targeted at critical, 
-   high-performing roles earning below $5,000/month.
-------------------------------------------------------------
-*/

@@ -1,6 +1,3 @@
--- SQL Schema for Employee Attrition Database (PostgreSQL)
-
--- 1. Create Employee Demographics Table (Parent Table)
 CREATE TABLE employee_demographics (
     "EmployeeNumber" INT PRIMARY KEY,
     "Age" INT,
@@ -10,7 +7,6 @@ CREATE TABLE employee_demographics (
     "EducationField" VARCHAR(30)
 );
 
--- 2. Create Job Details Table
 CREATE TABLE job_details (
     "EmployeeNumber" INT PRIMARY KEY REFERENCES employee_demographics("EmployeeNumber"),
     "Department" VARCHAR(50),
@@ -21,7 +17,6 @@ CREATE TABLE job_details (
     "OverTime" VARCHAR(10)
 );
 
--- 3. Create Compensation Table
 CREATE TABLE compensation (
     "EmployeeNumber" INT PRIMARY KEY REFERENCES employee_demographics("EmployeeNumber"),
     "MonthlyIncome" INT,
@@ -32,7 +27,6 @@ CREATE TABLE compensation (
     "StockOptionLevel" VARCHAR(20)
 );
 
--- 4. Create Survey Responses Table
 CREATE TABLE survey_responses (
     "EmployeeNumber" INT PRIMARY KEY REFERENCES employee_demographics("EmployeeNumber"),
     "EnvironmentSatisfaction" VARCHAR(20),
@@ -42,7 +36,6 @@ CREATE TABLE survey_responses (
     "JobInvolvement" VARCHAR(20)
 );
 
--- 5. Create Career History Table
 CREATE TABLE career_history (
     "EmployeeNumber" INT PRIMARY KEY REFERENCES employee_demographics("EmployeeNumber"),
     "Attrition" VARCHAR(10),
